@@ -6,7 +6,7 @@ from tkinter import filedialog
 from sentence_transformers import SentenceTransformer
 
 # Define global variables
-pdf_name = ""
+pdf_filepath = ""
 sentences = []
 sentence_embeddings = []
 
@@ -18,7 +18,7 @@ def validate_question_entry(*args):
 # Function to ask and answer the user's question
 def ask_question():
     # Check whether a pdf has been selected
-    if not pdf_name:
+    if not pdf_filepath:
         messagebox.showerror("No PDF Selected", "Please select a PDF file to ask questions about.")
         return
     
@@ -46,10 +46,10 @@ def clear_history():
     history_text.delete("1.0", tk.END)
 
 # Function to process a pdf file
-def process_pdf(pdf_name):
+def process_pdf(pdf_filepath):
     # Parse the pdf file's sentences
     global sentences
-    sentences = myutil.parse_sentences(pdf_name)
+    sentences = myutil.parse_sentences(pdf_filepath)
 
     # Embed the pdf file's sentences
     global sentence_embeddings
@@ -61,15 +61,15 @@ def process_pdf(pdf_name):
 def select_pdf_file():
     file_path = filedialog.askopenfilename(title="Select a PDF File", filetypes=[("PDF Files", "*.pdf")])
     if file_path:
-        global pdf_name 
-        pdf_name = os.path.basename(file_path)
+        global pdf_filepath 
+        pdf_filepath = file_path
         label.config(text="Processing PDF... Please wait.")
         clear_history()
         root.update()
 
         # Process the file
-        process_pdf(pdf_name)
-        label.config(text="Selected PDF: " + pdf_name)
+        process_pdf(pdf_filepath)
+        label.config(text="Selected PDF: " + os.path.basename(pdf_filepath))
 
 
 # Create the main window

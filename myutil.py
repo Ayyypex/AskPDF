@@ -4,12 +4,13 @@ import openai
 from nltk import pos_tag
 from nltk.corpus import wordnet
 from nltk.corpus import stopwords
+from config import OPENAI_API_KEY
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer, util
 
 # Set openai API key and token limit
-openai.api_key = "SECRET"
+openai.api_key = OPENAI_API_KEY       # Replace with your own API key
 TOKEN_LIMIT = 1000
 
 # Initialize SentenceTransformer, stop words, and Lemmatizer
@@ -19,9 +20,9 @@ lemmatizer = WordNetLemmatizer()
 
 ########## Public Functions
 # Function to parse a PDF into sentences
-def parse_sentences(pdf_name):
+def parse_sentences(pdf_filepath):
     # Extract the text from all pages
-    pdf_reader = PyPDF2.PdfReader(pdf_name)    
+    pdf_reader = PyPDF2.PdfReader(pdf_filepath)    
     pdf_text = ""
     for page in pdf_reader.pages:
         pdf_text += page.extract_text()
