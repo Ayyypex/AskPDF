@@ -58,7 +58,7 @@ def select_pdf_file():
 
         # Process the file, updating the window before processing begins
         title_label.config(text="Processing PDF... Please wait.")
-        clear_history()
+        history_text.delete("1.0", tk.END)
         root.update()
         process_pdf(file_path)
 
@@ -166,9 +166,13 @@ def add_question_response_to_database(question, response):
 # Function to clear question-response history
 def clear_history():
     # Return if a PDF has not been selected
+    global pdf_name
     if not pdf_name:
         return
-    
+
+    # Prompt the user to delete the PDF from the database
+    answer = messagebox.askyesno("Confirmation", "Would you like to also remove the PDF from the database?")
+
     # Clear question-response history in the frontend
     history_text.delete("1.0", tk.END)
     
@@ -176,6 +180,21 @@ def clear_history():
     conn = sqlite3.connect('chat_history.db')
     cursor = conn.cursor()
     cursor.execute("DELETE FROM QuestionResponse WHERE pdf_name = ?", (pdf_name,))
+
+    # User chose to delete PDF from database
+    if answer:
+        global sentences
+        global sentence_embeddings
+        
+        # Delete PDF from database
+        title_label.config(text="No PDF Selected")
+        cursor.execute("DELETE FROM PDF WHERE pdf_name = ?", (pdf_name,))
+
+        # Clear global variables
+        pdf_name = ""
+        sentences = []
+        sentence_embeddings = []
+        
     conn.commit()
     conn.close()
 
