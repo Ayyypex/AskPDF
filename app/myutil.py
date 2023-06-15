@@ -1,20 +1,27 @@
 import re
+import nltk
 import PyPDF2
 import openai
 from nltk import pos_tag
 from nltk.corpus import wordnet
 from nltk.corpus import stopwords
-from config import OPENAI_API_KEY
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer, util
 
+# Download resource packages
+nltk.download('punkt')
+nltk.download('wornet')
+nltk.download('omw-1.4')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+
 # Set openai API key and token limit
-openai.api_key = OPENAI_API_KEY       # Replace with your own API key
+openai.api_key = 'secret'       # Replace with your own API key
 TOKEN_LIMIT = 1000
 
 # Initialize SentenceTransformer, stop words, and Lemmatizer
-model = SentenceTransformer('bert-base-nli-mean-tokens')
+model = SentenceTransformer('sentence-transformers/multi-qa-mpnet-base-dot-v1')
 stop_words = stopwords.words('english')
 lemmatizer = WordNetLemmatizer()
 

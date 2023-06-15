@@ -1,0 +1,4 @@
+PyPDF2==3.0.1
+openai==0.27.6
+nltk==3.7
+sentence_transformers==2.2.2

@@ -1,3 +1,5 @@
+"#!/usr/bin/python3"
+
 import os
 import myutil
 import sqlite3
@@ -136,6 +138,7 @@ def ask_question():
     send_button.config(state=tk.DISABLED)
     history_text.insert(tk.END, f"Q: {question}\n")
     history_text.insert(tk.END, "Getting response...")
+    history_text.see(tk.END)
     root.update()
 
     # Make API call to answer the question, 
