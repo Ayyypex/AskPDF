@@ -174,7 +174,7 @@ def clear_history():
         return
 
     # Prompt the user to delete the PDF from the database
-    answer = messagebox.askyesno("Confirmation", "Would you like to also remove the PDF from the database?")
+    answer = messagebox.askyesno("Clear History", "Would you like to also remove the PDF from the database?")
 
     # Clear question-response history in the frontend
     history_text.delete("1.0", tk.END)
