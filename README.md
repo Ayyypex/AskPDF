@@ -39,12 +39,9 @@ The program currently identifies PDFs based solely on their names, which means t
 
 ## Screenshots
 Since it may take a while to get the program up and running, I'll show some screen shots.
-![image](https://github.com/Ayyypex/AskPDF/assets/88087970/54754b03-2de4-435f-be8a-b185760aa428)
-![image](https://github.com/Ayyypex/AskPDF/assets/88087970/eeff2b55-06f0-45d0-a169-585f752ac2f5)
-![image](https://github.com/Ayyypex/AskPDF/assets/88087970/7150f89c-4eae-49d8-bd36-72f8ffe6e42f)
-![image](https://github.com/Ayyypex/AskPDF/assets/88087970/cba0861d-bd72-4588-8077-8850f4628a18)
-![image](https://github.com/Ayyypex/AskPDF/assets/88087970/6f91ab3d-2b0b-4c45-ba45-8bfe7b92c1d9)
-![image](https://github.com/Ayyypex/AskPDF/assets/88087970/1858c213-d4d3-4860-adf3-5d3217219c7e)
-![image](https://github.com/Ayyypex/AskPDF/assets/88087970/d23c93ae-b262-4299-9c40-081094e46d2e)
+![image](https://github.com/Ayyypex/AskPDF/blob/main/screenshots/img1.PNG)
+![image](https://github.com/Ayyypex/AskPDF/blob/main/screenshots/img2.PNG)
+![image](https://github.com/Ayyypex/AskPDF/blob/main/screenshots/img3.PNG)
+
 
 The GPT API is prompted to use the information gathered from the paper to answer the question, so asking questions irrelevant to the paper won't lead to answers.
